@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+          *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: Arial;
+          }
+          
+          html,
+          body{
+            width: 100%;
+            height: 100%;
+            background-color: lightgrey;
+          }
+          
+          body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          
+          .clac-container{
+            height: 450px;
+            width: 320px;
+            background-color: black;
+            border-radius: 10px;
+            overflow: hidden;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 10px;
+          }
+          
+          .input{
+            padding: 10px;
+            font-size: 20px;
+            font-weight: 500;
+            background-color: lightgrey;
+            color: black;
+            outline: none;
+            border-radius: 5px;
+            text-align: right;
+          }
+          
+          .button-container{
+            margin: 10px;
+            padding: 10px;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: column;
+          }
+          
+          
+          .button-row{
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+          }
+          
+          
+          .btn{
+            height: 60px;
+            width: 60px;
+            font-weight: 500;
+            border-radius: 50%;
+            font-size: 25px;
+            background-color: darkgrey;
+            cursor: pointer;
+          }
+          
+          .btn:hover{
+            opacity: 0.9;
+          }
+          
+          .btn:active{
+            opacity: 0.7;
+          }
+          
+          .orange{
+            background-color: orange;
+            color: white;
+          }
+          
+          .clear{
+            background-color: orangered;
+            color: white;
+          }
+
+          @media (max-width: 580px) {
+              .clac-container{
+              height: fit-content;
+              width: 95%;
+              max-width: 300px;
+              gap: 20px;
+            }
+            
+            .input{
+              padding: 5px;
+              font-size: 18px;
+            }
+            
+            .button-container{
+              gap: 15px;
+            }        
+            
+            .btn{
+              height: 50px;
+              width: 50px;
+              font-size: 20px;
+            }
+          }
+    </style>
+  </head>
+  <body>
+    <div class="clac-container">
+      <input class="input" id="input" readonly>
+      <div class="button-container">
+        <div class="button-row">
+          <button class="btn" onclick="
+            updateExpression('1');
+          ">1</button>
+          <button class="btn" onclick="
+            updateExpression('2');
+          ">2</button>
+          <button class="btn" onclick="
+            updateExpression('3');
+          ">3</button>
+          <button class="btn orange" onclick="
+            updateExpression(' + ');
+          ">+</button>
+        </div>
+        <div class="button-row">
+          <button class="btn" onclick="
+            updateExpression('4');
+          ">4</button>
+          <button class="btn" onclick="
+            updateExpression('5');
+          ">5</button>
+          <button class="btn" onclick="
+            updateExpression('6');
+          ">6</button>
+          <button class="btn orange" onclick="
+            updateExpression(' - ');
+          ">-</button>
+        </div>
+        <div class="button-row">
+          <button class="btn" onclick="
+            updateExpression('7');
+          ">7</button>
+          <button class="btn" onclick="
+            updateExpression('8');
+          ">8</button>
+          <button class="btn" onclick="
+            updateExpression('9');
+          ">9</button>
+          <button class="btn orange" onclick="
+            updateExpression(' * ');
+          ">*</button>
+        </div>
+        <div class="button-row">
+          <button class="btn" onclick="
+            updateExpression('0');
+          ">0</button>
+          <button class="btn" onclick="
+            calculateTotal();
+          ">=</button>
+          <button class="btn clear" onclick="
+            clearInput();
+          ">C</button>
+          <button class="btn orange" onclick="
+            updateExpression(' / ');
+          ">/</button>
+        </div>
+      </div>
+    </div>
+    
+    <script>
+      const input = document.getElementById("input");
+      let calculate = "";
+      
+      function updateExpression(char) {
+        calculate += char;
+        input.value = calculate;
+      }
+      
+      function clearInput() {
+        input.value = "";
+        calculate = "";
+      }
+      
+      function calculateTotal() {
+        try {
+          if(calculate === ""){
+            input.value = "Please Enter Expression First!";
+          } else {
+            calculate = eval(calculate);
+            input.value = calculate;
+          }
+        } catch {
+          input.value = "Error";
+	        calculate = "";
+        }
+      }
+    </script>
+  </body>
+</html>
