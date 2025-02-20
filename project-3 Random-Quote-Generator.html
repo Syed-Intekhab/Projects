@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Random Qoute Generator</title>
+
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				font-family: arial;
+			}
+
+			html,
+			body{
+				height: 100%;
+				width: 100%;
+			}
+
+			body{
+				background-color: salmon;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-direction: column;
+			}
+
+			.container{
+				height: 300px;
+				width: 600px;
+				border-radius: 10px;
+				border: solid black 2px;
+				position: relative;
+				padding: 70px 25px 30px 25px;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-evenly;
+				background-color: slateblue;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+				text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+			}
+
+			.container img{
+				height: 100px;
+				width: 100px;
+				border-radius: 50%;
+				box-shadow: 0 0px 10px rgba(0, 0, 0, 0.4);
+				position: absolute;
+				left: 250px;
+				top: -50px;
+				background-color: lightgrey;
+				object-fit: cover;
+				object-position: center;
+			}
+
+			.container p{
+				font-size: 18px;
+				font-weight: 500;
+				color: white;
+			}
+
+			.container h2{
+				font-size: 20px;
+				font-weight: 900;
+				color: white;
+			}
+
+			.button{
+				margin-top: 40px;
+				padding: 10px;
+				font-size: 18px;
+				color: white;
+				background-color: black;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+				border-radius: 5px;
+				transition: opacity 0.3s;
+				cursor: pointer;
+			}
+
+			.button:hover{
+				opacity: 0.9;
+			}
+
+			span{
+				font-size: 45px;
+				color: black;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D">
+			<span>"</span><p>Love is a canvas painted with passion, trust, and everlasting commitment.</p><span>"</span>
+			<h2>- Shehriyar Inteqab</h2>
+		</div>
+		<button class="js-button button">Generate</button>
+		
+		<script>
+			const quotes = [
+				{qoute: "Love is a canvas painted with passion, trust, and everlasting commitment.", img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D", name: "Syed Shan"},
+				{qoute: "In the garden of life, love is the most beautiful flower that blooms.", img: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dXNlcnxlbnwwfHwwfHx8MA%3D%3D", name: "Syed Shahed"},
+				{qoute: "Love is not just a feeling, it's a choice we make every day to cherish and support one another.", img: "https://images.unsplash.com/photo-1546961329-78bef0414d7c?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHVzZXJ8ZW58MHx8MHx8fDA%3D", name: "Tuba Nahid"},
+				{qoute: "Like a gentle breeze, love whispers to our souls, reminding us of the beauty in connection.", img: "https://images.unsplash.com/photo-1639149888905-fb39731f2e6c?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHVzZXJ8ZW58MHx8MHx8fDA%3D", name: "Syed Tameem"},
+				{qoute: "True love knows no boundaries, it transcends time and space to unite hearts as one.", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHVzZXJ8ZW58MHx8MHx8fDA%3D", name: "Syed Aheed"},
+				{qoute: "True love knows no boundaries, it transcends time and space to unite hearts as one.", img: "https://images.unsplash.com/flagged/photo-1573740144655-bbb6e88fb18a?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D", name: "Syed Shadab"}
+			];
+			const btnEl = document.querySelector(".js-button");
+			const containerEl = document.querySelector(".container");
+
+			btnEl.addEventListener("click", () => {
+				const randomObj = randomQuote();
+
+				containerEl.innerHTML = `
+					<img src="${randomObj.img}">
+					<span>"</span><p>${randomObj.qoute}</p><span>"</span>
+					<h2>- ${randomObj.name}</h2>
+				`;				
+			});
+
+			function randomQuote(){
+				const randomNum = Math.floor(Math.random() * quotes.length);
+				return quotes[randomNum];
+			}
+			
+		</script>
+	</body>
+</html>

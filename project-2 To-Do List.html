@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>To-Do List App</title>
+
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				font-family: Arial, sans-serif;
+			}
+
+			html,
+			body{
+				height: 100%;
+				width: 100%;
+			}
+
+			.container{
+				height: 100%;
+				width: 100%;
+				background-color: #111111;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				color: #ffffff;	
+				padding: 40px 30px;	
+				overflow: auto;	
+			}
+
+			.input-container{
+				width: 100%;
+				display: flex;
+				gap: 40px;
+				justify-content: flex-start;
+				flex-wrap: wrap;
+				margin-bottom: 50px;
+				padding: 10px;
+				box-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
+			}
+
+			.to-do-input{
+				outline: none;
+				font-size: 17px;
+				font-weight: 500;
+				padding: 10px;
+				border: none;
+				border-radius: 1px;	
+				width: 300px;
+				height: 45px;
+			}
+
+			.date-input{
+				font-size: 17px;
+				font-weight: 500;
+				padding: 10px;
+				border-radius: 1px;
+				border: none;
+				width: 200px;
+				height: 45px;
+				outline: none;
+				cursor: pointer;
+			}
+			
+			.btn{
+				font-size: 17px;
+				font-weight: 700;
+				background-color: #01a101;
+				width: 100px;
+				height: 48px;
+				border-radius: 1px;
+				cursor: pointer;
+				color: #fff;
+			}
+			
+			.btn:hover{
+				opacity: 0.9;
+				border-radius: 5px;
+			}
+
+			.btn:active{
+				opacity: 0.6;
+			}
+	
+			.result-container{
+				width: 100%;
+			}
+
+			.card-container{
+				margin-bottom: 10px;
+				width: 100%;
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
+				gap: 30px;
+				flex-wrap: wrap;
+				padding: 10px;
+				border-bottom: 1px solid;
+			}
+
+			.card-container .task{
+				width: 60%;
+				text-wrap: wrap;
+			}
+
+			.card-container .due-date{
+				width: 20%;
+			}
+
+			.card-container .btn{
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="input-container">
+				<input class="to-do-input" id="to-do-input" placeholder="Enter Task Here!">
+				<input class="date-input" type="date" id="date">
+				<button class="btn js-btn-add">Add</button>
+			</div>
+			<div class="result-container js-result-container">
+				<!-- Generating HTML with JS -->
+			</div>
+		</div>
+		
+		<script>
+			const addButtonEl = document.querySelector(".js-btn-add");
+			const inputEl = document.getElementById("to-do-input");
+			const dateEl = document.getElementById("date");	
+			
+			const tasks = JSON.parse(localStorage.getItem("task")) || [
+				{name: "Learn CSS", date: "20/12/2024"},
+				{name: "Play football", date: "20/12/2024"}
+			];
+
+			showTasks();
+
+			inputEl.addEventListener("keydown", (event) => {
+				if(event.key === "Enter"){
+					dateEl.focus();
+				}
+			});
+			
+			addButtonEl.addEventListener("click", () => {
+				const name = inputEl.value;
+				const date = dateEl.value;
+
+				if(name !== "" && date !== ""){
+					tasks.push({
+						name,
+						date
+					});
+				}
+
+				inputEl.value = "";
+				saveToStorage();
+				showTasks();
+			});				
+			
+
+			function showTasks(){
+				let clutter = "";
+				tasks.forEach((task, index) => {
+					clutter += `
+						<div class="card-container">
+							<p class="task">${task.name}</p>
+							<p class="due-date">${task.date}</p>
+							<button class="btn js-remove-btn" onclick="
+								tasks.splice(${index}, 1);
+								saveToStorage();
+								showTasks();
+							">Delete</button>	
+						</div>
+					`;
+				});
+	
+				document.querySelector(".js-result-container")
+					.innerHTML = clutter;
+			}
+
+			function saveToStorage(){
+				localStorage.setItem("task", JSON.stringify(tasks));
+			}
+		</script>
+	</body>
+</html>
