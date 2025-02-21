@@ -4,12 +4,12 @@
     --loader-text-color: #ffffffdc;
     --loader-dot-color: var(--main-color);
     --black-color: #111111;
-	--bg-color: #03071e;
-	--second-bg-color: #370617; /*Remove this if needed*/
-	--text-color: #ffffff;
+	  --bg-color: #03071e;
+	  --second-bg-color: #370617; /*Remove this if needed*/
+	  --text-color: #ffffff;
     --sub-heading-color: #ffffffe7;
     --nav-color: #e7e1e1c9;
-	--main-color: #addc2f;
+	  --main-color: #addc2f;
     --card-background-color: #323232;
 
     /* Font size for headings */
@@ -248,6 +248,27 @@ a{
   display: block;
   width: 25px;
   z-index: 2;
+}
+
+/* Logo Animations */
+@keyframes animate-stroke {
+  0%{
+      fill: transparent;
+      stroke: var(--loader-text-color);
+      stroke-width: 3;
+      stroke-dashoffset: 25%;
+      stroke-dasharray: 0 32%;
+  } 50%{
+      fill: transparent;
+      stroke: var(--loader-text-color);
+      stroke-width: 3;
+  } 80%, 100%{
+      fill: var(--loader-text-color);
+      stroke: transparent;
+      stroke-width: 0;
+      stroke-dashoffset: -25%;
+      stroke-dasharray: 32% 0;
+  }
 }
 
 /* Hero Section Heading Dot Bounce Animation */
