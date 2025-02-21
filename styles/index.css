@@ -261,6 +261,14 @@ a{
   100% { transform:  translateY(0); }
 }
 
+/* Entrance Effect for Header */
+@keyframes entrance-header {
+  to{
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
 /* Entrance Effect for Main Hero Heading */
 @keyframes hero-heading {
   from{
