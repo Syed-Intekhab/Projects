@@ -1,0 +1,362 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --loader-text-color: #ffffffdc;
+    --loader-dot-color: var(--main-color);
+    --black-color: #111111;
+	--bg-color: #03071e;
+	--second-bg-color: #370617; /*Remove this if needed*/
+	--text-color: #ffffff;
+    --sub-heading-color: #ffffffe7;
+    --nav-color: #e7e1e1c9;
+	--main-color: #addc2f;
+    --card-background-color: #323232;
+
+    /* Font size for headings */
+    --main-heading-font-size: 5rem;
+    --sub-heading-font-size: 2rem;
+    --section-heading-font-size: 2rem;
+    --card-heading-font-size: 1.3rem;
+    
+    /* Common Font Sizes */
+    --content-font-size: 1rem;
+    --nav-font-size: 0.9rem;
+
+    /* Bouncing Dot */
+    --dot-size: 1rem;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", serif;
+    font-weight: 700;
+    font-style: normal;
+    scroll-behavior: smooth;
+}
+
+html,
+body{
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+    background-color: var(--bg-color);
+}
+
+/* Default Styling for sections */
+section{
+    position: relative; /* Ensures pseudo-element positions correctly */
+    width: 100%;
+    padding: 2.5rem 2vw;
+    overflow-x: hidden;
+}
+
+.hidden{
+    display: none;
+}
+
+/* Default Styling For Section Headings */
+.section-heading-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.section-heading-container .section-heading{
+    position: relative;
+    width: fit-content;
+    color: var(--text-color);
+    font-size: var(--section-heading-font-size);
+}
+
+/* Default Styling for Card Heading */
+.card-heading-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-heading-container .card-heading{
+    color: var(--text-color);
+    font-size: var(--card-heading-font-size);
+    font-weight: 400;
+}
+
+/* Underline effect */
+.section-heading-container .section-heading::after {
+    position: absolute;
+    content: "";
+    left: -5px;
+    bottom: 0;
+    width: calc(100% + 10px);
+    height: 3px;
+    background-color: var(--text-color);
+    
+    /* Center the transform origin */
+    transform-origin: center;
+    transform: scaleX(0);
+    
+    /* Animation */
+    animation: grow-shrink 2s infinite ease-in-out;
+}
+
+/* Default User Selection */
+*::selection{
+    color: var(--main-color);
+    background: var(--text-color);
+}
+
+/* Default List and a (Anchor) Style */
+li{
+    list-style-type: none;
+}
+
+a{
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+/* Logo span color */
+.main-color{
+    color: var(--main-color);
+}
+
+/* Styling for CTA */
+.cta-button-container{
+    width: 100%;
+}
+
+/* CTA Button Styling */
+.btn-12,
+.btn-12 *,
+.btn-12 :after,
+.btn-12 :before,
+.btn-12:after,
+.btn-12:before{
+  border: 0 solid;
+  box-sizing: border-box;
+}
+
+.btn-12{ 
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: button;
+  background-color: transparent;
+  background-image: none;
+  color: var(--sub-heading-color);
+  cursor: pointer;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-size: 100%;
+  font-weight: 900;
+  line-height: 1.5;
+  margin: 0;
+  -webkit-mask-image: -webkit-radial-gradient(#000, #fff);
+  padding: 0;
+  text-transform: uppercase;
+}
+
+.btn-12:disabled{
+  cursor: default;
+}
+
+.btn-12:-moz-focusring{
+  outline: auto;
+}
+
+.btn-12 svg{
+  display: block;
+  vertical-align: middle;
+}
+
+.btn-12 [hidden]{
+  display: none;
+}
+
+.btn-12{
+  border-radius: 50px;
+  border-width: 2px;
+  overflow: hidden;
+  padding: 10px 35px;
+  position: relative;
+}
+
+.btn-12 span,
+.social-links-container a svg,
+.navigation-container .nav-item a:last-child {
+  mix-blend-mode: difference;
+}
+
+.btn-12:after,
+.btn-12:before{
+  background: linear-gradient(
+    90deg,
+    #fff 25%,
+    transparent 0,
+    transparent 50%,
+    #fff 0,
+    #fff 75%,
+    transparent 0
+  );
+  content: "";
+  inset: 0;
+  position: absolute;
+  transform: translateY(var(--progress, 100%));
+  transition: transform 0.3s ease;
+}
+
+.btn-12:after{
+  --progress: -100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0,
+    transparent 25%,
+    #fff 0,
+    #fff 50%,
+    transparent 0,
+    transparent 75%,
+    #fff 0
+  );
+  z-index: -1;
+}
+
+.btn-12:hover:after,
+.btn-12:hover:before{
+  --progress: 0;
+}
+
+/* Social Links */
+.social-links-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.social-links-container a{
+  padding: 8px;
+  border-radius: 50%;
+  z-index: 3;
+}
+
+.social-links-container a svg{
+  position: relative;
+  display: block;
+  width: 25px;
+  z-index: 2;
+}
+
+/* Hero Section Heading Dot Bounce Animation */
+@keyframes bounce {
+  0% { transform:  translateY(0); }
+  20% { transform:  translateY(-35px); }
+  40% { transform:  translateY(0); }
+  60% { transform:  translateY(-15px); }
+  80% { transform:  translateY(0); }
+  90% { transform:  translateY(-8px); }
+  100% { transform:  translateY(0); }
+}
+
+/* Entrance Effect for Main Hero Heading */
+@keyframes hero-heading {
+  from{
+      transform: translateY(30px);
+      opacity: 0;
+  } to{
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
+/* Entrance for Hero Content */
+@keyframes entrance-hero-left {
+  from{
+      transform: translateX(-30px);
+      opacity: 0;
+  } to{
+      transform: translateX(0);
+      opacity: 1;
+  }
+}
+
+/* Entrance for Hero Image */
+@keyframes entrance-hero-right {
+  from{
+      transform: translateX(30px);
+      opacity: 0;
+  } to{
+      transform: translateX(0);
+      opacity: 1;
+  }
+}
+
+/* Navigation Panel Entrance Effect */
+@keyframes slide-in {
+  from{
+      transform: translateX(200px);
+      opacity: 0;
+  } to{
+      transform: translateX(0);
+      opacity: 1;
+  }
+}
+
+@media (max-width: 720px) {
+  /* Remove Following Cursor On Small Devices */
+  .cursor-dot{
+    display: none;
+  }
+}
+
+/* Button size for small screen devices */
+@media (max-width: 540px) {
+  .btn-12{
+    padding: 8px 25px;
+  }
+
+  .btn-12::after,
+  .btn-12::before{
+    display: none;
+  }
+}
+
+/* Responsive code for tab screens */
+@media (max-width: 720px) {
+    :root{
+        /* Tab Font size for headings */
+        --main-heading-font-size: 10vw;
+        --sub-heading-font-size: 1.8rem;
+        --section-heading-font-size: 1.8rem;
+        --card-heading-font-size: 1.2rem;
+        
+        /* Bouncing Dot */
+        --dot-size: 0.9rem;
+    }
+
+    /* Styling for CTA */
+    .cta-button-container{
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 540px) {
+    :root {
+        /* Font size for headings */
+        --main-heading-font-size: 10vw;
+        --sub-heading-font-size: 1.5rem;
+        --section-heading-font-size: 1.6rem;
+
+        /* Bouncing Dot */
+        --dot-size: 2.9vw;
+    }
+
+    /* Underline effect */
+    .section-heading-container .section-heading::after {
+        height: 2px;
+    }
+}

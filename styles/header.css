@@ -1,0 +1,183 @@
+/* Header Section Design */
+.main-header-container{
+    position: relative;
+    width: 100%;
+    height: 60px;
+    transform: translateY(-50px);
+    opacity: 0;
+    user-select: none;
+    z-index: 999;
+    animation: entrance-header 0.5s forwards ease;
+}
+
+.header-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo Design */
+.loader-container {
+    position: relative;
+    width: fit-content;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.loader-container svg{
+    width: 6.5rem;
+    font-weight: 700;
+}
+
+.loader-container svg text{
+    font-size: 5rem;
+    stroke-width: 2;
+    letter-spacing: -2px;
+}
+
+.loader-container svg text.text-body{
+    stroke: var(--loader-text-color);
+    animation: animate-stroke 5s infinite alternate;
+}
+
+.loader-container svg text.dot{
+    fill: var(--loader-dot-color);
+    stroke: var(--loader-text-color);
+    animation: animate-dot 5s infinite alternate;
+}
+
+.main-navigation-container{
+    width: 100%;
+    height: 100%;
+    padding: 0 30px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.navigation-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+.navigation-container .nav-item{
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.navigation-container .nav-item a{
+    position: relative;
+    color: var(--nav-color);
+    font-size: var(--nav-font-size);
+    transition: all 0.2s linear;
+}
+
+.nav-item a:hover{
+    color: var(--text-color);
+}
+
+.navigation-container .nav-item:last-child a{
+    padding: 5px 10px;
+}
+
+.nav-link::after{
+    position: absolute;
+    content: "";
+    left: -3px;
+    bottom: -2px;
+    width: calc(100% + 6px);
+    height: 2px;
+    background-color: var(--text-color);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.4s ease;
+}
+
+.nav-item a:hover.nav-link::after{
+    transform: scaleX(1);
+}
+
+.hamburger-container,
+.close-navigation-container{
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    border: 1px solid var(--main-color);
+    border-radius: 5px;
+    /* Hide hamburger by default */
+    display: none;
+    cursor: pointer;
+}
+
+.close-navigation-container{
+    position: absolute;
+    animation: slide-in 0.3s ease;
+    z-index: 99999;
+}
+
+.hamburger-container svg,
+.close-navigation-container svg{
+    width: 22px;
+    height: 22px;
+    fill: var(--main-color);
+}
+
+/* No need to make code responsive for small screens */
+@media (max-width: 720px) {
+    /* Header Section Design */
+
+    /* Logo Design */
+    .loader-container {
+        padding: 0px;
+    }
+
+    .main-navigation-container{
+        padding: 0 10px;
+    }
+
+    .navigation-container{
+        gap: 15px;
+    }
+
+    .nav-link::after{
+        left: -2px;
+        width: calc(100% + 4px);
+    }
+}
+
+@media (max-width: 540px) {
+    /* Show hamburger in mobile screens */
+    .hamburger-container{
+        display: flex;
+    }
+
+    .navigation-container{
+        /* Setting display to none by default */
+        display: none;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 250px;
+        height: 100vh;
+        background-color: var(--card-background-color);
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 100px;
+        gap: 30px;
+        animation: slide-in 0.3s ease;
+        z-index: 999;
+    }
+
+    .navigation-container .nav-item{
+        height: auto;
+    }
+}
