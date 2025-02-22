@@ -24,7 +24,7 @@ const projects = [
         live: "https://syed-intekhab.github.io/Projects/project-1%20Calculator.html"
     }
 ];
-const containerEl = document.querySelector(".js-projects-card-container");
+const projectsContainerEl = document.querySelector(".js-projects-card-container");
 let projectHTML = "";
 
 projects.forEach(card => {
@@ -46,4 +46,4 @@ projects.forEach(card => {
     `;
 });
 
-containerEl.innerHTML = projectHTML;
+projectsContainerEl.innerHTML = projectHTML;
