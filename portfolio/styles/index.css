@@ -1,0 +1,26 @@
+/* For all content in index file */
+.hero-content .left-content p,
+.about-information-container p,
+.about-facts-container .fact p,
+.contact-info a{
+    color: var(--text-color);
+    font-size: var(--content-font-size);
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: var(--main-color);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--text-color);
+    border-radius: 50px;
+}

@@ -1,0 +1,118 @@
+/* Achievements Section Design */
+/* Default styling for (section tag) */
+
+.achievements-section-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.achievements-content-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 10px 20px;
+}
+
+.achievement-card-container{
+    position: relative;
+    display: flex;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.achievements-content{
+    flex-shrink: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.5s ease;
+}
+
+.achievement-image-container{
+    width: 90%;
+    max-width: 400px;
+}
+
+.achievement-image-container img{
+    width: 100%;
+    border-radius: 10px;
+}
+
+.achievement{
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.achievement-heading{
+    width: 100%;
+}
+
+.achievement-heading h3{
+    color: var(--text-color);
+    font-size: var(--card-heading-font-size);
+    letter-spacing: .5px;
+    text-align: center;
+}
+
+.achievement-desc{
+    width: 100%;
+    max-width: 500px;
+    padding: 5px 10px;
+}
+
+.achievement-desc p{
+    color: var(--text-color);
+    font-size: var(--content-font-size);
+    letter-spacing: .5px;
+    font-weight: 500;
+    width: 100%;
+    text-align: center;
+}
+
+.next-prev-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 10px 20px;
+}
+
+.prev,
+.next{
+    width: 60px;
+    height: 40px;
+    padding: 7px 12px;
+    border-radius: 50px;
+    border: 1px solid var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-color 0.4s ease;
+}
+
+.prev svg,
+.next svg{
+    fill: var(--text-color);
+    transition: fill 0.4s ease;
+}
+
+.prev:hover,
+.next:hover{
+    background-color: var(--text-color);
+}
+
+.prev:hover svg,
+.next:hover svg{
+    fill: var(--bg-color);
+}

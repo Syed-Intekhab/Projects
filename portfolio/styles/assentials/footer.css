@@ -1,0 +1,15 @@
+.main-footer-container{
+    width: 100%;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-container h3{
+    font-size: var(--content-font-size);
+    color: var(--text-color);
+    text-align: center;
+    font-weight: 400;
+    letter-spacing: .3px;
+}

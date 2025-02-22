@@ -1,0 +1,143 @@
+.project-card{
+    width: 300px;
+    background: linear-gradient(to bottom right,transparent 60%, var(--card-background-color));
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    border-radius: 10px;
+    border: 0.5px solid var(--text-color);
+    transition: background-color 0.5s ease;
+}
+
+.project-card:hover{
+    background-color: var(--card-background-color);
+}
+
+.project-card:hover .project-image-container img{
+    scale: 1.1;
+    filter: brightness(1);
+}
+
+.project-image-container{
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.project-image-container img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.8);
+    transition: scale 0.4s ease, filter 0.4s ease;
+}
+
+.project-dets-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+}
+
+.project-dets-container h2{
+    color: #d1914c;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.for-whom{
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 8px;
+    color: var(--bg-color);
+    background-color: #d1914c;
+    width: max-content;
+    margin-bottom: 10px;
+    border-radius: 3px;
+}
+
+.project-dets-container p{
+    color: var(--text-color);
+    font-size: 13px;
+    letter-spacing: 1px;
+    font-weight: 300;
+    width: 100%;
+    margin-bottom: 10px;
+    flex: 1;
+}
+
+.project-dets-container .project-arrow{
+    padding: 5px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: 1px solid var(--text-color);
+    transition: background-color 0.5s ease;
+}
+
+.project-dets-container .project-arrow a{
+    width: 100%;
+    height: 100%;
+    font-size: var(--nav-font-size);
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: color 0.5s ease;
+}
+
+.project-arrow:hover.project-arrow a{
+    color: var(--bg-color);
+}
+
+.project-arrow:hover{
+    background-color: var(--text-color);
+}
+
+.github-links-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.github-links-container a{
+    padding: 5px 10px;
+    border: 1px solid var(--text-color);
+    font-weight: 400;
+    width: 100%;
+    text-align: center;
+    border-radius: 5px;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.github-links-container a:hover{
+    background-color: var(--text-color);
+    color: var(--bg-color);
+}
+
+@media (max-width: 720px) {
+    .project-card{
+        width: 250px;
+    }
+}
+
+@media (max-width: 565px) {
+    .project-card{
+        width: 90%;
+    }
+    
+    .project-image-container{
+        height: 50vw;
+    }
+}

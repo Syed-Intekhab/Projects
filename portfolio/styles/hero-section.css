@@ -79,12 +79,6 @@
     animation: entrance-hero-left 0.5s ease;
 }
 
-.left-content p{
-    color: var(--text-color);
-    font-size: var(--content-font-size);
-    font-weight: 400;
-}
-
 .hero-sub-heading-container{
     width: 100%;
     display: flex;

@@ -1,0 +1,36 @@
+/* Project Section Design (Project-details.php page inhereting some styling fro here)! */
+.main-projects-section{
+    position: relative;
+    width: 100%;
+}
+
+.projects-page-section{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.projects-page-card-container{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
+
+.projects-page-section > .cta-button-container{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.for-whom{
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 8px;
+    color: var(--bg-color);
+    background-color: #d1914c;
+    width: max-content;
+    margin-bottom: 10px;
+    border-radius: 3px;
+}

@@ -1,0 +1,20 @@
+.social-links-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.social-links-container a{
+    padding: 8px;
+    border-radius: 50%;
+    z-index: 3;
+}
+
+.social-links-container a svg{
+    position: relative;
+    display: block;
+    width: 25px;
+    z-index: 2;
+}
