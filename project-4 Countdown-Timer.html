@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Countdown Timer</title>
+		<link rel="shortcut icon" href="portfolio/images/logos/fav-icon.png" type="image/x-icon">
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+				box-sizing: border-box;
+			}
+
+			html,
+			body{
+				height: 100%;
+				width: 100%;
+			}
+
+			body{
+				background-color: rgba(0, 0, 0, 1);
+				display: flex;
+				justify-content: center;
+				height: 100vh;
+				align-items: center;
+			}
+
+			.countdown-container{
+				height: 600px;
+				width: 600px;
+				padding: 60px 20px;
+				display: flex;
+				justify-content: space-evenly;
+				align-items: center;
+				flex-direction: column;
+			}
+
+			.input-container{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 100%;
+				gap: 20px;
+			}
+
+			.countdown-container input{
+				font-size: 20px;	
+				font-weight: 400;
+				height: 40px;
+				width: 20%;
+				padding: 5px 10px;
+				border: none;
+				border-radius: 5px;
+				box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
+			}
+
+			.span-container{
+				width: 100%;
+				display: flex;
+				justify-content: space-evenly;
+				padding: 0 25%;
+				align-items: center;
+			}
+
+			.span-container span{
+				color: white;
+				font-size: 24px;
+				font-weight: 900;
+				border-radius: 5px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 70px;
+				width: 70px;
+				background-color: slateblue;
+				box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
+				letter-spacing: 2px;
+			}
+			
+			.button-container{
+				width: 100%;
+				display: flex;
+				justify-content: space-evenly;
+				align-items: center;
+				padding: 0 10%;
+			}
+			
+			.button-container .btn{
+				font-size: 18px;
+				font-weight: 400;
+				background-color: lightseagreen;
+				padding: 20px 30px;
+				border: none;
+				border-radius: 10px;
+				cursor: pointer;
+			}
+			
+			.button-container .btn:hover{
+				opacity: 0.8;
+			}
+
+			::selection {
+			  color: black;
+			  background: yellow;
+			}
+
+			@media (max-width: 580px) {
+				.countdown-container{
+					height: 600px;
+					width: 100%;
+					padding: 40px 10px;
+				}
+
+				.input-container{
+					width: 100%;
+					justify-content: center;
+					gap: 10px;
+					padding: 0 20px;
+				}
+
+				.countdown-container input{
+					height: auto;
+				}
+
+				.span-container{
+					gap: 10px;
+					justify-content: center;
+					padding: 0 20px;
+				}
+
+				.span-container span{
+					height: 60px;
+					width: 60px;
+				}
+				
+				.button-container{
+					justify-content: center;
+					padding: 0 20px;
+					gap: 10px;
+				}
+				
+				.button-container .btn{
+					padding: 20px 25px;
+					border-radius: 50px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="countdown-container">
+			<div class="input-container">
+				<input type="number" id="hours-input" max="60" min="0" value="0">
+				<input type="number" id="minutes-input" max="60" min="0" value="0">
+				<input type="number" id="seconds-input" max="60" min="0" value="0">
+			</div>
+			<div class="span-container">
+				<span class="countdown" id="hours">00</span>
+				<span class="countdown" id="min">00</span>
+				<span class="countdown" id="seconds">00</span>
+			</div>
+			<div class="button-container">
+				<button class="btn" id="start">Start</button>
+				<button class="btn" id="stop">Stop</button>
+				<button class="btn" id="reset">Reset</button>
+			</div>
+		</div>
+		
+
+		<script>
+			const hoursEl = document.getElementById("hours");
+			const minutesEl = document.getElementById("min");
+			const secondsEl = document.getElementById("seconds");
+			const startEl = document.getElementById("start");
+			const stopEl = document.getElementById("stop");
+			const resetEl = document.getElementById("reset");
+			const hoursInputEl = document.getElementById("hours-input");
+			const minutesInputEl = document.getElementById("minutes-input");
+			const secondsInputEl = document.getElementById("seconds-input");
+			let isCounting = false;
+			let interval;
+			let seconds;
+			let minutes;
+			let hours;
+
+			
+				
+			
+			startEl.addEventListener("click", () => {
+				hoursEl.textContent = hoursInputEl.value ? hoursInputEl.value : "00";
+				minutesEl.textContent =  minutesInputEl.value ? minutesInputEl.value : "00";
+				secondsEl.textContent =  secondsInputEl.value ? secondsInputEl.value : "00";
+
+				seconds = Number(secondsInputEl.value);
+				minutes = Number(minutesInputEl.value);
+				hours = Number(hoursInputEl.value);
+				
+				
+				if(isCounting){
+					clearInterval(interval);
+				}	
+					
+				isCounting = true;
+				
+				startTimer(seconds, minutes, hours);
+				
+			});
+
+			stopEl.addEventListener("click", () => {
+				if(isCounting){
+					isCounting = false;
+					stopEl.textContent = "Resume";
+					clearInterval(interval);
+				} else {
+					isCounting = true;
+					stopEl.textContent = "Stop";
+					let sec = Number(secondsEl.innerText);
+					let min = Number(minutesEl.innerText);
+					let hour = Number(hoursEl.innerText);
+					startTimer(sec, min, hour);
+				}
+			});
+
+			resetEl.addEventListener("click", () => {
+				seconds = 0;
+				minutes = 0;
+				hours = 0;
+				clearInterval(interval);
+				
+				minutesInputEl.value = 0;
+				secondsInputEl.value = 0;
+				hoursInputEl.value = 0;
+				
+				hoursEl.textContent = hoursInputEl.value ? hoursInputEl.value : "00";
+				minutesEl.textContent =  minutesInputEl.value ? minutesInputEl.value : "00";
+				secondsEl.textContent =  secondsInputEl.value ? secondsInputEl.value : "00";
+			});
+
+			function startTimer(seconds, minutes, hours){
+				if(hours === 0 && minutes === 0 && seconds === 0){
+					alert("CountDownt Ended!");
+				} else {
+
+					interval = setInterval(() => {
+						if(seconds === 0){
+							seconds = 59;
+							minutes--;
+							secondsEl.textContent =  seconds ? seconds : "00";
+							minutesEl.textContent = minutes ? minutes : "00";
+						} else {
+							seconds--;
+							secondsEl.textContent =  seconds ? seconds : "00";
+						}	
+	
+						if(minutes === 0){
+							if(hours !== 0){
+								hours--;
+								minutes = 59;
+							}
+							minutesEl.textContent = minutes ? minutes : "00";
+							hoursEl.textContent = hours ? hours : "00";
+						}
+	
+						if(hours === 0 && minutes === 0 && seconds === 0){
+							alert("CountDownt Ended!");
+							clearInterval(interval);
+						}
+						
+					}, 1000);
+				}
+			}
+
+		</script>
+	</body>
+</html>
