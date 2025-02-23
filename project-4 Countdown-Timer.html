@@ -192,8 +192,8 @@
 				minutesEl.textContent =  minutesInputEl.value ? minutesInputEl.value : "00";
 				secondsEl.textContent =  secondsInputEl.value ? secondsInputEl.value : "00";
 
-				seconds = Number(secondsInputEl.value);
-				minutes = Number(minutesInputEl.value);
+				seconds = Number(secondsInputEl.value) > 59 ? 59 : Number(secondsInputEl.value);
+				minutes = Number(minutesInputEl.value) > 59 ? 59 : Number(minutesInputEl.value);
 				hours = Number(hoursInputEl.value);
 				
 				
