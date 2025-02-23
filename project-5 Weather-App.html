@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Weather App</title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+				box-sizing: border-box;
+				font-family: cursive;
+			}
+
+			html,
+			body{
+				height: 100%;
+				width: 100%;
+			}
+
+			.body-container{
+				height: 100%;
+				width: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background-color: lightblue;
+				padding: 10px;
+				user-select: none
+			}
+
+			.main-container{
+				/*height: 80%;*/
+				width: 420px;
+				background-color: #646464;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-direction: column;
+				border-radius: 10px;
+				border: 2px solid #111;
+				box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+				overflow: hidden;
+				padding: 5px 10px;
+				color: #fff;
+				pointer-events: none;
+			}
+
+			.input-container{
+				width: 100%;
+				padding: 5px 10px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-wrap: wrap;
+				gap: 10px;
+				pointer-events: all;
+			}
+
+			.input-container input{
+				width: 70%;
+				font-size: 18px;
+				color: #111111;
+				padding: 5px;
+				border-radius: 4px;
+				border: none;
+				outline: none;
+				box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+			}
+
+			.input-container button{
+				font-size: 18px;
+				padding: 5px 10px;
+				color: #ffffff;
+				background-color: #147a84;
+				border: none;
+				border-radius: 4px;
+				box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+				cursor: pointer;
+			}
+			
+			.input-container button:hover{
+				opacity: 0.9;
+			}
+
+			.input-container button:active{
+				opacity: 1;
+			}
+
+			.location-container{
+				width: 100%;
+				/*height: 80px;*/
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-direction: column;
+				padding: 5px 10px;
+			}
+
+			.location-container h1{
+				font-size: 30px;
+				font-weight: 900;
+				text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+				text-align: center;
+			}
+
+			.location-container p{
+				font-size: 15px;
+				font-weight: 100;
+			}
+			
+			.main-section {
+				width: 100%;
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-start;
+				align-items: center;
+			}
+
+			.img-container{
+				/*height: 60%;*/
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-start;
+				align-items: center;
+				gap: 10px;
+				padding: 5px;
+			}
+			
+			.img-container img{
+				height: 150px;				
+			}
+
+			.img-container h1{
+				font-size: 35px;
+				font-weight: 900;
+			}
+
+			.details-container{
+				/*height: 40%;*/
+				width: 100%;
+				display: flex;
+				padding: 5px 10px;
+				align-items: center;
+				justify-content: space-between;
+			}
+
+			.details-container .humidity-container,
+			.details-container .wind-container{
+				width: 50%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-direction: column;
+			}
+
+			.humidity-container img,
+			.wind-container img{
+				height: 65px;
+			}
+
+			.humidity-container h2,
+			.wind-container h2{
+				font-size: 20px;
+				font-weight: 100;
+			}
+
+			.humidity-container h3,
+			.wind-container h3{
+				font-size: 26px;
+				font-weight: 900;
+			}
+
+			@media (max-width: 500px) {
+				.main-container{
+					width: 100%;
+				}
+
+				.input-container{
+					width: 100%;
+					flex-direction: column;
+				}
+
+				.input-container input{
+					width: 100%;
+					padding: 5px 10px;
+				}
+
+				.input-container button{
+					padding: 10px 20px;
+				}
+
+				.location-container h1{
+					font-size: 28px;
+				}
+				
+				.main-section {
+					height: auto;
+				}
+
+				.img-container{
+					gap: 0px;
+				}
+				
+				.img-container img{
+					height: 130px;				
+				}
+
+				.img-container h1{
+					font-size: 28px;
+					font-weight: 900;
+				}
+
+				.details-container{
+					padding: 5px 5px;
+				}
+
+
+				.humidity-container img,
+				.wind-container img{
+					height: 55px;
+				}
+
+				.humidity-container h2,
+				.wind-container h2{
+					font-size: 18px;
+				}
+
+				.humidity-container h3,
+				.wind-container h3{
+					font-size: 24px;
+					font-weight: 900;
+				}
+			}
+		</style>
+	</head>
+	<body>
+	<div class="body-container">
+		<div class="main-container">
+			<div class="input-container">
+				<input autocomplete="off" placeholder="City Name..." id="input">
+				<button id="btn">Check</button>
+			</div>
+			<div class="location-container">
+				<h1 class="js-city-name">City</h1>
+				<p class="js-date">Day - Time</p>
+			</div>
+			<div class="main-section">
+				<div class="img-container">
+					<img class="js-image" src="assets/weather.png">
+					<h1 class="js-temp">0&deg;C</h1>
+				</div>
+				<div class="details-container">
+					<div class="humidity-container">
+						<img src="assets/rain-256.webp">
+						<h2>Humidity</h2>
+						<h3 class="js-humidity">0%</h3>
+					</div>	
+					<diV class="wind-container">
+						<img src="assets/Weather_Free_Filled_Outline_weather-wind-breeze-256.webp">
+						<h2>Wind</h2>
+						<h3 class="js-wind-speed">0m/s</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+		<script>
+			const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+			const btnEl = document.getElementById("btn");
+			const inputEl = document.getElementById("input");
+			const dateEl = document.querySelector(".js-date");
+			const imgEl = document.querySelector(".js-image");
+			const API_KEY = "API KEY";
+			const date = new Date();
+
+			btnEl.addEventListener("click", () => {
+				// Uncomment following code if you ahve api key.
+				// giveResponse();
+				alert("Sorry no API Key found!");
+			});
+			
+			// Uncomment following code if you have api key.
+			// inputEl.addEventListener("keydown", (event) => {
+			// 	if(event.key === "Enter"){
+			// 		giveResponse();
+			// 	}
+			// });
+
+			function giveResponse(){
+				const city = inputEl.value;
+				const URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
+				
+				fetch(URL).then((response) => {
+					if(!response.ok){
+						document.querySelector(".js-city-name").textContent = `Enter Valid City`;
+					}
+
+					return response.json();
+				}).then((response) => {
+					if(response.weather[0].main === "Clouds"){
+						imgEl.src = `assets/images/project_5_weather_app_sunny.png`;
+					} else if(response.weather[0].main === "Rain"){
+						imgEl.src = `assets/images/project_5_weather_app_rainy.png`;
+					} else if(response.weather[0].main === "Mist"){
+						imgEl.src = `assets/images/project_5_weather_app_windy.png`;
+					} else if(response.weather[0].main === "Thunderstorm"){
+						imgEl.src = `assets/images/project_5_weather_app_storm.png`;
+					} else if(response.weather[0].main === "Snow"){
+						imgEl.src = `https://cdn2.iconfinder.com/data/icons/weather-color-2/500/weather-24-256.png`;
+					} else {
+						imgEl.src = `https://cdn1.iconfinder.com/data/icons/weather-471/128/SUN-256.png`;
+					}
+
+					document.querySelector(".js-city-name").textContent = response.name;
+					document.querySelector(".js-temp").innerHTML = response.main.temp.toFixed(1) + "&deg;C";
+					document.querySelector(".js-humidity").textContent = response.main.humidity + "%";
+					document.querySelector(".js-wind-speed").textContent = response.wind.speed.toFixed(1) + "m/s";
+				}).catch((error) => {
+					console.log(error);
+				});
+
+				if(date.getHours() > 11){
+					dateEl.innerHTML = `${weekday[date.getDay()]} - ${date.getHours()}PM`;
+				} else {
+					dateEl.innerHTML = `${weekday[date.getDay()]} - ${date.getHours()}AM`;
+				}
+			}
+		</script>
+	</body>
+</html>

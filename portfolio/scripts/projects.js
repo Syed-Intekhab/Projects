@@ -1,19 +1,19 @@
 const projects = [
     {
-        img: "portfolio/images/projects/1740049930_67b70e0a01d33.png",
-        name: "Random Quote Generator",
+        img: "portfolio/images/projects/music_player_1.png",
+        name: "Music Player",
         whom: "PERSONAL",
-        desc: "A simple yet powerful Quote Generator app built using HTML, CSS, and JavaScript. It provides users w...",
-        link: "https://github.com/Syed-Intekhab/Projects/blob/main/project-3%20Random-Quote-Generator.html",
-        live: "https://syed-intekhab.github.io/Projects/project-3%20Random-Quote-Generator.html"
+        desc: "A Music Player built using HTML, CSS, and JS. It provides users with a seamless music experience, al...",
+        link: "https://github.com/Syed-Intekhab/Projects/blob/main/Music%20Player",
+        live: "https://syed-intekhab.github.io/Projects/Music%20Player"
     },
     {
-        img: "portfolio/images/projects/1740049484_67b70c4c2039f.png",
-        name: "To Do List",
+        img: "portfolio/images/projects/weather_app_1.png",
+        name: "Weather App",
         whom: "PERSONAL",
-        desc: "A responsive and interactive To-Do List app built using HTML, CSS, and JavaScript. It helps users ef...",
-        link: "https://github.com/Syed-Intekhab/Projects/blob/main/project-2%20To-Do%20List.html",
-        live: "https://syed-intekhab.github.io/Projects/project-2%20To-Do%20List.html"
+        desc: "A responsive and interactive Weather app built using HTML, CSS, and JavaScript. It helps users get c...",
+        link: "https://github.com/Syed-Intekhab/Projects/blob/main/project-5%20Weather-App.html",
+        live: "https://syed-intekhab.github.io/Projects/project-5%20Weather-App.html"
     },
     {
         img: "portfolio/images/projects/1740049103_67b70acf82746.png",

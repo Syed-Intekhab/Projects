@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Music Player</title>
+		<link rel="shortcut icon" href="../portfolio/images/logos/fav-icon.png" type="image/x-icon">
+		<link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
+		<link rel="stylesheet" href="styles/style.css">
+		<link rel="stylesheet" href="styles/main.css">
+	</head>
+	<body>
+		<div class="remove-fav-screen">
+			<!-- Generate HTML with JS -->
+		</div>
+
+		<!-- <div class="remove-search-screen"></div> -->
+
+		<header class="main-header-container" id="header-bockmark">
+			<div class="search-bar-container-main">
+				<div class="search-bar-container active">
+					<img src="https://cdn1.iconfinder.com/data/icons/jumpicon-basic-ui-line-1/32/-_Magnifier-Search-Zoom--256.png" class="magnifier" title="Toggle Search">
+					<input class="input js-input" placeholder="Search...">
+					<img src="https://cdn3.iconfinder.com/data/icons/fluent-regular-24px-vol-5/24/ic_fluent_mic_on_24_regular-256.png" class="mic-icon">
+				</div>
+			</div>
+			<div class="fav-songs-container">
+				<i class="ri-heart-line js-fav-song-icon"></i>
+			</div>
+			<div class="fav-songs-list-container js-fav-songs js-anime-fav-songs">
+				<!-- Generating HTML with JS -->
+			</div>
+		</header>
+		<main class="main-container">
+			<section class="left-section">
+				<div class="left-main-container">
+					<img alt="Poster Image" class="js-anime-poster-image js-poster-image">
+					<input type="range" class="seek js-seek js-anime-seek" value="0" min="0">
+					<div class="controls-container js-anime-controls">
+						<span class="controls"><i class="ri-heart-line js-fav-icon"></i></span>
+						<span class="controls"><i class="ri-skip-back-mini-fill backward-icon js-backward-icon"></i></span>
+						<span class="controls"><i class="ri-play-mini-fill play-icon js-play-icon"></i></span>
+						<span class="controls"><i class="ri-skip-forward-mini-fill forward-icon js-forward-icon"></i></span>
+					</div>
+				</div>
+			</section>
+			<section class="right-section js-anime-right-section">
+				<h1>All songs</h1>
+				<div class="card-container js-card-container js-anime-card-container">
+					<!-- Generating HTML with JS -->
+				</div>
+			</section>
+		</main>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src="scripts/data.js"></script>
+		<script src="scripts/animation.js"></script>
+		<script src="scripts/search.js"></script>
+		<script src="scripts/script.js"></script>
+		<script src="scripts/favoriteSongs.js"></script>
+		<script src="scripts/controls.js"></script>
+		<script src="scripts/controls-actions.js"></script>
+	</body>
+</html>
