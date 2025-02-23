@@ -16,6 +16,6 @@ const songs = [
 ];
 
 let favoriteSongs = JSON.parse(localStorage.getItem("favSongs")) || [
-	{name: "Aawara shaam hai", url: "./songs/Aawara shaam hai.m4a", img: "./images/Aawara shaam hai.jpg", id: "s1"},
+	{name: "Aawara shaam hai", url: "./songs/Aawara shaam hai.m4a", img: "./images/Aawara Shaam Hai.jpg", id: "s1"},
 	{name: "Bedardi se Pyar ka", url: "./songs/Bedardi se pyar ka.m4a", img: "./images/Bedardi Se Pyaar Ka.jpg", id: "s2"},	
 ];

@@ -1,5 +1,4 @@
 //fav songs logic
-
 const favSongIcon = document.querySelector(".js-fav-song-icon");
 
 favSongIcon.addEventListener("click", () => {
