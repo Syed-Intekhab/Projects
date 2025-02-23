@@ -1,5 +1,5 @@
 const songs = [
-	{name: "Aawara shaam hai", url: "./songs/Aawara shaam hai.m4a", img: "./images/Aawara shaam hai.jpg", id: "s1"},
+	{name: "Aawara shaam hai", url: "./songs/Aawara shaam hai.m4a", img: "./images/Aawara Shaam Hai.jpg", id: "s1"},
 	{name: "Bedardi se Pyar ka", url: "./songs/Bedardi se pyar ka.m4a", img: "./images/Bedardi Se Pyaar Ka.jpg", id: "s2"},
 	{name: "Hale dil", url: "./songs/Hale dil.m4a", img: "./images/Hale dil.jpg", id: "s3"},
 	{name: "Ik lamha", url: "./songs/Ik lamha.mp3", img: "./images/Ik lamha.jpg", id: "s4"},
