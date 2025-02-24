@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Quiz App</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				font-family: cursive;
+			}
+
+			html,
+			body{
+				width: 100%;
+				height: 100%;
+			}
+
+			body{
+				background-color: #dbdbdb;
+				padding: 20px 20px;
+				user-select: none;
+			}
+
+			body>h1{
+				font-size: 25px;
+				text-align: center;
+			}
+
+			.main-container{
+				margin-top: 20px;
+				width: 100%;
+				background-color: lightblue;
+				padding: 5px 10px;
+			}
+
+			.question-card{
+				border-top: 1px solid rgba(0, 0, 0, 0.5);
+				padding: 5px 10px;
+			}
+
+			.question-card h4{
+				font-size: 20px;
+				font-weight: 300;
+				margin-bottom: 5px;
+			}
+
+			.answer{
+				margin-bottom: 5px;
+			}
+
+			.answer label,
+			input{
+				font-size: 17px;
+				font-weight: 100;
+				cursor: pointer;
+			}
+			
+			.answer-container{ padding: 5px 2px; }
+
+			.answer-container p{
+				margin-top: 10px;
+				color: green;
+				font-weight: 900;
+				font-size: 20px;
+			}
+
+			.submit{
+				color: #ffffff;
+				background-color: slateblue;
+				padding: 10px 20px;
+				border: 1px solid rgba(0, 0, 0, 0.3);
+				border-radius: 8px;
+				margin: 20px auto;
+				display: block;
+				font-size: 15px;
+				cursor: pointer;
+			}
+			
+			.submit:hover{
+				opacity: 0.9;
+			}
+
+			.submit:active{
+				opacity: 1;
+			}
+
+			#right-answer{
+				display: none;
+			}
+
+			.result-container{
+				width: 100%;
+				margin: 10px 20px;
+				padding: 20px;
+				display: none;
+			}
+
+			.result-container p:nth-child(2){
+				color: green;
+			}
+
+			.result-container p:nth-child(3){
+				color: red;
+			}
+			
+			.spacer{
+				width: 100%;
+				height: 5px;
+			}
+
+			.input-field-container{
+				width: 100%;
+				margin-top: 10px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.input-field-container input{
+				padding: 5px 10px;
+				border-radius: 5px;
+				outline: none;
+			}
+
+			@media (max-width: 580px) {
+				body{
+					padding: 20px 0px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Welcome to my quiz App</h1>
+		<div class="main-container js-question-container">
+			<!-- Generating HTML With JS -->
+		</div>
+		<div class="input-field-container">
+			<input type="text" class="user-input-field">
+		</div>
+		<button class="submit js-submit-btn">Submit</button>
+		<div class="spacer"></div>
+		<div class="result-container js-result-container">
+			<h3 id="name">Name: User</h3>
+			<p id="score">Score: 0</p>
+			<p id="wrong">Wrong: 0</p>
+		</div>
+
+		<script>
+			const questions = [
+				{
+					"question": "What is the capital of France?",
+					"choice": ["Madrid", "Paris", "Berlin", "Rome"],
+					"rightAns": "Paris"
+				},
+				{
+					"question": "Who wrote 'To Kill a Mockingbird'?",
+					"choice": ["Mark Twain", "F. Scott Fitzgerald",
+					"Harper Lee", "Ernest Hemingway"], "rightAns": "Harper Lee"
+				},	
+				{
+					"question": "What is the chemical symbol for water?",
+					"choice": ["H2O", "CO2", "NaCl", "O2"],
+					"rightAns": "H2O"
+				}, 
+				{
+					"question": "Which planet is known as the Red Planet?",
+					"choice": ["Venus", "Jupiter", "Mars", "Saturn"],
+					"rightAns": "Mars"
+				},
+				{
+					"question": "Who painted the Mona Lisa?",
+					"choice": ["Vincent van Gogh", "Leonardo da Vinci", "Pablo Picasso", "Claude Monet"],
+					"rightAns": "Leonardo da Vinci"
+				},
+				{
+					"question": "What is the largest ocean on Earth?",
+					"choice": ["Pacific Ocean", "Atlantic Ocean", "Indian Ocean", "Arctic Ocean"],
+					"rightAns": "Pacific Ocean"
+				},
+				{
+					"question": "Who discovered penicillin?",
+					"choice": ["Marie Curie", "Alexander Fleming", "Louis Pasteur", "Isaac Newton"],
+					"rightAns": "Alexander Fleming"
+				},
+				{
+					"question": "What is the hardest natural substance on Earth?",
+					"choice": ["Gold", "Silver", "Iron", "Diamond"],
+					"rightAns": "Diamond"
+				},
+				{
+					"question": "What is the smallest prime number?",
+					"choice": ["0", "1", "2", "3"],
+					"rightAns": "2"
+				},
+				{
+					"question": "Which element has the atomic number 1?",
+					"choice": ["Hydrogen", "Helium", "Lithium", "Oxygen"],
+					"rightAns": "Hydrogen"
+				},
+				{
+					"question": "In which year did the Titanic sink?",
+					"choice": ["1900", "1912", "1918", "1925"],
+					"rightAns": "1912"
+				}, 
+				{
+					"question": "Which country is the largest by land area?", 
+					"choice": ["Canada", "Russia", "China", "United States"], 
+					"rightAns": "Russia"
+				}, 
+				{
+					"question": "What is the main ingredient in guacamole?", 
+					"choice": ["Tomato", "Onion", "Avocado", "Lemon"], 
+					"rightAns": "Avocado"
+				}, 
+				{
+					"question": "Which planet has the most moons?", 
+					"choice": ["Earth", "Mars", "Jupiter", "Neptune"], 
+					"rightAns": "Jupiter"
+				}, 
+				{
+					"question": "What is the capital of Japan?", 
+					"choice": ["Beijing", "Tokyo", "Seoul", "Bangkok"], 
+					"rightAns": "Tokyo"
+				}, 
+				{
+					"question": "Which language is primarily spoken in Brazil?", 
+					"choice": ["Spanish", "English", "Portuguese", "French"], 
+					"rightAns": "Portuguese"
+				}, 
+				{
+					"question": "Who is the author of the Harry Potter series?", 
+					"choice": ["J.R.R. Tolkien", "C.S. Lewis", "J.K. Rowling", "Stephen King"], 
+					"rightAns": "J.K. Rowling"
+				}, 
+				{
+					"question": "What is the speed of light?", 
+					"choice": ["150,000 km/s", "200,000 km/s", "300,000 km/s", "350,000 km/s"], 
+					"rightAns": "300,000 km/s"
+				}, 
+				{
+					"question": "Which organ is responsible for pumping blood throughout the body?", 
+					"choice": ["Brain", "Liver", "Heart", "Lungs"], 
+					"rightAns": "Heart"
+				}, 
+				{
+					"question": "What is the largest mammal in the world?", 
+					"choice": ["Elephant", "Blue whale", "Giraffe", "Great white shark"], 
+					"rightAns": "Blue whale"
+				}
+			];
+
+			const questionsAll = questions;
+			const QcontainerEl = document.querySelector(".js-question-container");
+			const btnEl = document.querySelector(".js-submit-btn");
+			let score = 0;
+			let wrong = 0;
+			let questionsAllArr = [];
+			let isShowing = false;
+			let user = "";
+			
+			function loadQuestions(){
+				let clutter = "";
+				
+				questionsAll.forEach((Q, index) => {
+					clutter += `
+						<div class="question-card">
+							<h4>${index+=1}) ${Q.question}</h4>
+							<div class="answer-container">
+								<div class="answer">
+									<input type="radio" id="${Q.choice[0]}" name="quesiton${index}" required class="input-elem">
+									<label for="${Q.choice[0]}">A) ${Q.choice[0]}</label>
+								</div>
+				
+								<div class="answer">
+									<input type="radio" id="${Q.choice[1]}" name="quesiton${index}" class="input-elem">
+									<label for="${Q.choice[1]}">B) ${Q.choice[1]}</label>
+								</div>
+					
+								<div class="answer">
+									<input type="radio" id="${Q.choice[2]}" name="quesiton${index}" class="input-elem">
+									<label for="${Q.choice[2]}">C) ${Q.choice[2]}</label>
+								</div>
+			
+								<div class="answer">
+									<input type="radio" id="${Q.choice[3]}" name="quesiton${index}" class="input-elem">
+									<label for="${Q.choice[3]}">D) ${Q.choice[3]}</label>
+								</div>
+			
+								<p id="right-answer" class="answers">Answer: ${Q.rightAns}</p>
+							</div>
+						</div>
+					`;
+				});
+
+				QcontainerEl.innerHTML = clutter;
+			}
+			loadQuestions();
+
+			questionsAll.forEach((question) => {
+				questionsAllArr.push(question.rightAns);
+			});
+			
+			btnEl.addEventListener("click", () => {
+				if(isShowing){
+					document.querySelector(".js-result-container").style.display = "none";
+					document.querySelectorAll(".answers").forEach(ans => ans.style.display = "none");
+					score = 0;
+					btnEl.innerHTML = "Submit";
+					isShowing = false;
+					loadQuestions();
+				} else {
+					const inputEls = document.querySelectorAll(".input-elem");
+					let selectedAns = "";
+					
+					inputEls.forEach((Q, index) => {
+						if(inputEls[index].checked){
+							selectedAns = inputEls[index].id;
+	
+							questionsAllArr.forEach((Q) => {
+								if(Q === selectedAns){
+									score++;
+								}
+							});
+						}
+					});
+	
+					user = document.querySelector(".user-input-field").value || "User";
+					document.querySelector(".js-result-container").style.display = "block";
+					document.querySelectorAll(".answers").forEach(ans => ans.style.display = "block");
+					document.querySelector("#name").textContent = `Name: ${user}`;
+					document.getElementById("score").textContent = `Score: ${score}`;
+					document.getElementById("wrong").textContent = `Wrong: ${20 - score}`;
+	
+					btnEl.innerHTML = "Reset";
+					isShowing = true;
+				}
+			});
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
