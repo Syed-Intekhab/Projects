@@ -2,8 +2,11 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+    
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
 		<title>Expense Tracker</title>
+
 		<style>
 			*{
 				padding: 0;
@@ -151,6 +154,47 @@
 				top: 5%;
 				right: 2%;
 				border-radius: 4px;
+			}
+
+			@media (max-width: 580px) {
+				.expense-form .input-container label{
+					font-size: 20px;
+				}
+
+				.expense-form .input-container input{
+					font-size: 20px;
+					width: 100%;
+					margin: 5px 0px;
+				}
+
+				.expense-list .expense-card .dets{
+					flex-direction: column;
+					justify-content: flex-start;
+					width: 100%;
+				}
+
+				.expense-list .expense-card .dets p{
+					width: 100%;
+				}
+			
+				.expense-list .expense-card .dets p:last-child{
+					text-align: left;
+				}
+				
+				.expense-list .expense-card .expense-description{
+					flex-direction: column;
+					gap: 10px;
+				}
+
+				.summary-container{
+					color: #fff;
+					padding: 5px 10px;
+					background-color: #111;
+					position: fixed;
+					top: 8%;
+					right: 2%;
+					border-radius: 4px;
+				}
 			}
 		</style>
 	</head>
