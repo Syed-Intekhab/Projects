@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+    
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>Expense Tracker</title>
+
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+				box-sizing: border-box;
+				font-family: cursive;
+			}
+
+			html,
+			body{
+				height: 100%;
+				width: 100%;
+			}
+
+			body{
+				background-color: lightblue;
+				display: flex;
+				justify-content: center;
+				align-items: flex-start;
+				user-select: none;
+			}
+			
+			.main-container{
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+
+			.expense-form{
+				padding: 10px 20px;
+				display: flex;
+				flex-direction: column;
+				width: 100%;
+				gap: 20px;
+				margin: 20px 0px;
+			}
+			
+			.expense-form .input-container label{
+				font-size: 18px;
+				font-weight: 900;
+				letter-spacing: 1px;
+			}
+
+			.expense-form .input-container input{
+				font-size: 18px;
+				font-weight: 500;
+				padding: 5px 10px;
+				border: 2px solid #111;
+				outline: none;
+				border-radius: 5px;
+				background-color: transparent;
+			}
+
+			.expense-form .input-container input::-webkit-outer-spin-button,
+			.expense-form .input-container input::-webkit-inner-spin-button {
+				-webkit-appearance: none;
+ 				margin: 0;
+			}
+
+			.expense-form .input-container button{
+				padding: 10px 30px;
+				border: none;
+				border-radius: 5px;
+				background-color: green;
+				color: #fff;
+				font-size: 18px;
+				font-weight: 900;
+				letter-spacing: 1px;
+				margin-left: 50%;
+				transform: translateX(-50%);
+				cursor: pointer;
+			}
+
+			.expense-form .input-container button:hover{
+				opacity: 0.9;
+			}
+
+			.expense-form .input-container button:active{
+				opacity: 1;
+			}
+
+			.expense-form .input-container{
+				width: 100%;
+			}
+
+			.expense-list{
+				width: 100%;	
+				padding: 10px 20px;
+			}
+
+			.expense-list .expense-card{
+				display: flex;
+				flex-direction: column;
+				border-top: 2px solid #111;
+				padding: 7px 10px;
+				gap: 10px;
+			}
+
+			.expense-list .expense-card .dets{
+				display: flex;
+				justify-content: space-between;
+				gap: 10px;
+			}
+
+			.expense-list .expense-card .dets p{
+				width: 33%;
+				font-size: 15px;
+			}
+		
+			.expense-list .expense-card .dets p:last-child{
+				text-align: right;
+			}
+			
+			.expense-list .expense-card .expense-description{
+				width: 100%;
+				display: flex;
+				justify-content: space-between;
+			}
+
+			.expense-list .expense-card .expense-description button{
+				border: none;
+				border-radius: 5px;
+				padding: 10px 20px;
+				background-color: red;
+				color: #fff;
+				font-size: 15px;
+				cursor: pointer;
+				transition: background-color 0.5s; 
+			}
+
+			.expense-description button:hover{
+				opacity: 0.7;
+			}
+
+			.expense-description button:active{
+				opacity: 1;
+			}
+
+			.summary-container{
+				color: #fff;
+				padding: 5px 10px;
+				background-color: #111;
+				position: fixed;
+				top: 5%;
+				right: 2%;
+				border-radius: 4px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="main-container">
+			<h1>Expense Tracker</h1>
+			<form id="expense-form" class="expense-form">
+				<div class="input-container">
+					<label>Name: </label>
+					<input type="text" class="js-expense-name" placeholder="Enter your expense.." required>
+				</div>	
+				<div class="input-container">
+					<label>Amount: </label>
+					<input type="number" class="js-expense-amount" placeholder="Enter expense amount.." required>
+				</div>
+				<div class="input-container">				
+					<input type="date" class="js-expense-date" required>
+				</div>
+				<div class="input-container">
+					<label>Description About Expense: </label>
+					<input type="text" class="js-expense-description" placeholder="Enter expense description..." required>
+				</div>
+				<div class="input-container">
+					<button type="submit">Add</button>
+				</div>
+			</form>
+
+			<div class="expense-list js-expense-list">
+				<!-- Generating HTML with Js -->
+			</div>
+		</div>
+		<div class="summary-container">
+			<p>Total: <span class="total">0</span></p>
+		</div>
+
+		<script>
+			const formEl = document.getElementById("expense-form");
+			const nameEl = document.querySelector(".js-expense-name");
+			const amountEl = document.querySelector(".js-expense-amount");
+			const dateEl = document.querySelector(".js-expense-date");
+			const descEl = document.querySelector(".js-expense-description");
+			const listContainerEl = document.querySelector(".js-expense-list");
+			let expenses = JSON.parse(localStorage.getItem("expenses")) || [
+				{
+					name: "Expense Name here",
+					date: "21/40/2024",
+					desc: "Exepense descrioption here...",
+					amount: "Expense Amount",
+					id: Date.now()
+				}
+			];
+			
+			displayExpenses();
+			totalAmount();			
+			
+			formEl.addEventListener("submit", (event) => {
+
+				const name = nameEl.value;
+				const date = dateEl.value;
+				const desc = descEl.value;
+				const amount = amountEl.value;
+				
+				const expense = {
+					name,
+					date,
+					desc,
+					amount,
+					id: Date.now()
+				};
+				
+				expenses.unshift(expense);
+				localStorage.setItem("expenses", JSON.stringify(expenses));
+				totalAmount();
+
+				displayExpenses();
+			});
+
+			function displayExpenses(){
+				let clutter = "";
+			
+				expenses.forEach((expense) => {
+					clutter += `
+						<div class="expense-card" data-id="${expense.id}">
+							<div class="dets">	
+								<p>${expense.date}</p>
+								<p>${expense.name}</p>
+								<p>${expense.amount}</p>
+							</div>
+							<div class="expense-description">
+								<p>${expense.desc}</p>
+								<button class="delete-btn" id="${expense.id}">Delete</button>
+							</div>
+						</div>
+					`;
+				});
+
+				listContainerEl.innerHTML = clutter;
+
+				
+			}
+
+			const cards = document.querySelectorAll(".expense-card");
+			document.querySelectorAll(".delete-btn").forEach((btn, index) => {
+				btn.addEventListener("click", () => {
+					cards.forEach((card, index) => {
+						if(card.dataset.id == btn.id){
+							card.remove();
+							expenses.splice(index, 1);
+							localStorage.setItem("expenses", JSON.stringify(expenses));
+							totalAmount();
+						}
+					});
+				});
+			});
+
+			function totalAmount(){
+				let total = 0;
+
+				expenses.forEach((expense) => {
+					total += Number(expense.amount);
+				});
+
+				document.querySelector(".total").innerHTML = total;
+			}
+		</script>
+	</body>
+</html>
