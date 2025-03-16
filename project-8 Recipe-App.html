@@ -2,11 +2,8 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-    
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
 		<title>Recipe App</title>
-		
 		<style>
 			@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');	
 			@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Roboto+Slab:wght@100..900&display=swap');	
@@ -215,7 +212,6 @@
 			.all-recipe-container h1{
 				text-align: center;
 			}
-					
 				
 			/* Card Details Section styling */
 			.card-details-section{
@@ -353,7 +349,7 @@
 				recipes.slice(0, 3).forEach(recipe => {
 					recipesHTML += `
 						<div class="card">
-							<img class="card-image" src="${recipe.img}" alt="${recipe.title}">
+							<img class="card-image" src="${recipe.img}" alt="${recipe.title}" onerror="this.onerror=null; this.src='assets/fallback-image.jpg';">
 							<h2 class="card-title">${recipe.title}</h2>
 							<p class="card-description">${recipe.desc}</p>
 						</div>
@@ -367,7 +363,7 @@
 				recipes.forEach(recipe => {
 					allRecipesHTML += `
 						<div class="card" onclick="handleCardInfo(dataset.recipeId)" data-recipe-id="${recipe.id}">
-							<img class="card-image" src="${recipe.img}" alt="${recipe.title}">
+							<img class="card-image" src="${recipe.img}" alt="${recipe.title}" onerror="this.onerror=null; this.src='assets/fallback-image.jpg';">
 							<h2 class="card-title">${recipe.title}</h2>
 							<p class="card-description">${recipe.desc}</p>
 						</div>
@@ -420,7 +416,7 @@
 
 				document.querySelector('.js-card-details-container').innerHTML = `
 					<h1>${matchingCard.title}</h1>
-					<img src="${matchingCard.img}" alt="${matchingCard.title}">
+					<img class="card-image" src="${matchingCard.img}" alt="${matchingCard.title}" onerror="this.onerror=null; this.src='assets/fallback-image.jpg';">
 					<h2>Description</h2>
 					<p>${matchingCard.desc.replace(/\n/g, '<br>')}</p>
 					<h2>Ingredients</h2>
