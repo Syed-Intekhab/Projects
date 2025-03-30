@@ -1,0 +1,623 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Lato", sans-serif;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #E3E6E6;
+    overflow-x: hidden;
+}
+
+.navBar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 60px;
+    width: 100vw;
+    background-color: rgb(19,25,33);
+}
+
+.borderLogo {
+    display: flex;
+    height: 52px;
+    border: 1px solid transparent;
+    width: 120px;
+}
+
+.borderLogo:hover {
+    border: 1px solid #ffffff;
+}
+
+.navLogo {
+    height: 60px;
+    width: 120px;
+}
+
+.logo {
+    height: 38px;
+    width: 118px;
+    background-image: url(AmazonLogo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 7px 0px 0px 1px;
+}
+
+.addrContainer {
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 60px;
+}
+
+.locationBorder {
+    display: flex;
+    height: 52px;
+    width: 75px;
+    border: 1px solid transparent;
+    align-items: center;
+}
+
+.locationBorder:hover {
+    border: 1px solid #ffffff;
+}
+
+.addrSubContainer {
+    line-height: 14px;
+    margin-left: 2px;
+}
+
+.bx {
+    font-size: 20px;
+    padding-top: 14px;
+}
+
+.deliverTo {
+    font-size: 12px;
+    color: #c8cacb;
+}
+
+.textIndia {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.searchBoxContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+}
+
+.dropDownContainer {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    height: 40px;
+    width: 53px;
+    background-color: #E6E6E6;
+    border: 2px solid #ff000000;
+    border-radius: 5px 0px 0px 5px;
+    flex-direction: column;
+}
+
+.dropDown {
+    margin-left: 10px;
+}
+
+.selectMenu {
+    font-size: 12px;
+    color: #636968;
+    font-weight: 500;
+}
+
+select {
+    color: #636968;
+    font-size: 10px;
+    width: 19px;
+    background-color: transparent;
+    border: none;
+}
+
+.mainSearchContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    margin-left: 11px;
+}
+
+.searchBoxContainer1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    margin-left: 0;
+}
+
+.searchBoxField {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    width: 353px;
+    background-color: #ffffff;
+    border: 20px solid #ff000000;
+}
+
+.searchField {
+    position: relative;
+    left: -21px;
+    height: 38px;
+    width: 353px;
+    border: none;
+    border-left: 1px solid #CDCDCD;
+    background-color: #FFFFFF;
+    padding: 10px;
+}
+
+.searchIconContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 41px;
+    margin-left: 0px;
+}
+
+.searchIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 41px;
+    width: 45px;
+    color: #ffffff;
+    background-color: #FEBD69;
+    border-radius: 0px 5px 5px 0px;
+    margin-left: 0px;
+}
+
+.bx-search-alt-2 {
+    font-size: 25px;
+    padding: 15px;
+    color: black;
+}
+
+.mainToolsContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 60px;
+    width: 370px;
+}
+
+.searchBorder {
+    display: flex;
+    align-items: center;
+    border: 3px solid transparent;
+    height: 45px;
+    width: 454px;
+}
+
+.searchBorder:hover {
+    border: 3px solid #FF9900;
+}
+
+.toolsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    margin-left: 15px;
+}
+
+.toolsBorder {
+    display: flex;
+    height: 43px;
+    widtH: 80px;
+    border: 1px solid transparent;
+}
+
+.toolsBorder:hover {
+    border: 1px solid #ffffff;
+}
+
+.toolImage {
+    display: inline-block;
+    height: 14px;
+    width: 19px;
+    background-image: url('flagUSA.png');
+    background-size: cover;
+    margin: 8px 0px 0px 0px;
+}
+
+.toolSpan {
+    font-size: 13px;
+    font-weight: bold;
+    margin: 10px 0px 0px 5px;
+    color: #ffffff;
+}
+
+.languageDropdown {
+    color: #ffffff;
+    margin-top: 14px;
+    width: 15px;
+}
+
+.signBorder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 43px;
+    width: 105px;
+    border: 1px solid transparent;
+    margin-left: 5px;
+}
+
+.signBorder:hover {
+    border: 1px solid #ffffff;
+}
+
+.signInContainer {
+    color: #ffffff;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 60px;
+}
+
+.signInOptions {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 45px;
+    flex-direction: column;
+}
+
+.helloLink {
+    display: block;
+    font-size: 12px;
+}
+
+.helloAccount {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.returnOrderContainer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    color: white;
+    height: 60px;
+    margin-left: 29px;
+}
+
+.returnBorder {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    height: 42px;
+    width: 62px;
+    border: 1px solid transparent;
+}
+
+.returnBorder:hover {
+    border: 1px solid #ffffff;
+}
+
+.returnSpan {
+    font-size: 11.5px;
+}
+
+.orderSpan {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.cartBorder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 42px;
+    width: 62px;
+    border: 1px solid transparent;
+}
+
+.cartBorder:hover {
+    border: 1px solid #ffffff;
+}
+
+.cartContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    padding-bottom: 12px;
+}
+
+.bx-cart {
+    font-size: 40px;
+    color: #ffffff;
+}
+
+.subNav {
+    display: flex;
+    height: 40px;
+    background-color: #232F3E;
+    color: white;
+}
+
+.subNavMenu {
+    font-size: 15px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 7px;
+}
+
+.subNavContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 430px;
+    font-size: 13px;
+    padding: 13px;
+    font-weight: bold;
+}
+
+#allMenu {
+    padding: 0;
+    font-size: 24px;
+}
+
+.subNavAllMenu {
+    font-size: 13px;
+}
+
+/* Main Body Section */
+.heroSection {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(heroImage.jpg);
+    background-size: inherit;
+    height: 84vh;
+    width: 123.9vw;
+    right: 245px;
+    position: relative;
+}
+
+.textSection {
+    position: absolute;
+    left: 21%;
+    top: 47%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 967px;
+    background-color: #F5F6F6;
+    font-size: 14px;
+}
+
+.textContentSpan {
+    color: #007185;
+}
+
+.productItemsContainer {
+    position: absolute;
+    left: 21%;
+    top: 59%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 94.5vw;
+}
+
+.productCard {
+    display: flex;
+    justify-content: flex-start;
+    background-color: #FFFFFF;
+    height: 420px;
+    width: 309px;
+}
+
+.productMain {
+    margin: 21px;
+    height: 380px;
+    width: 267px;
+}
+
+.imgDiv {
+    overflow: hidden;
+}
+
+.image1 {
+    width: 378px;
+    height: 303px;
+    position: relative;
+    right: 60px;
+    margin-bottom: 20px;
+}
+
+.productHeading {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.showMore {
+    font-size: 13px;
+}
+
+footer {
+    position: relative;
+    top: 1248px;
+    height: 100vh;
+    width: 100vw;
+    background-color: #131A22;
+}
+
+.footerGoTop {
+    background-color: #37475A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 46px;
+    position: relative;
+    right: 9px;
+}
+
+.linkGoTop {
+    text-decoration: none;
+    height: 49px;
+    width: -webkit-fill-available;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.secondFooter {
+    background-color: #232F3E;
+    height: 370px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+}
+
+ul {
+    color: #DDDDD3;
+    list-style-type: none;
+    line-height: 26px;
+    font-size: 13.5px;
+}
+
+.secondFooterContainer {
+    display: flex;
+    justify-content: space-between;
+    margin: 45px 34px 0px 15px;
+    height: 100%;
+    width: 86%;
+}
+
+.subDivContainer {
+    width: 175px;
+}
+
+.contentPara {
+    font-size: 15.4px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.footercontent {
+    width: 200px;
+}
+
+.footerContentMargin {
+    margin-left: 49px;
+}
+
+.footerContentMargin2 {
+    margin-left: 135px;
+    width: 150px;
+}
+
+.footerLogIn {
+    height: 100px;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 0.2px solid #E3E6E6;
+}
+
+.footerLogInImage {
+    background-image: url(AmazonLogo.png);
+    height: 27px;
+    width: 75px;
+    background-size: cover;
+}
+    
+.footerLogInButtons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 51px;
+    width: 420px;
+}
+    
+.earth {
+    height: 34px;
+    width: 130px;
+    background-color: blue;
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+    border: 1px solid #E3E6E6;
+    background-color: #232F3E;
+    color: #ffffff;
+}
+    
+.bxs-planet {
+    margin-left: 7px;
+    padding: 0;
+}
+    
+.earthEnglish {
+    font-size: 12px;
+    margin: 10px;
+}
+    
+.USD {
+    
+}
+    
+.bx-dollar-circle {
+    padding: 0;
+    margin-left: 7px;
+}
+    
+.flag {
+    
+}
+    
+.iconUsaImage {
+    background-image: url(FlagUSA.png);
+    background-size: cover;
+    height: 14px;
+    width: 20px;
+    margin-left: 10px;
+}
+    
+.footerLogInSpan {
+    margin-right: 100px;
+}
+    
+.copyFooter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    color: #ffffff;
+    background-color: #000000;
+    border-top: 0.5px solid #ffffff;
+}
+    
+.copyFooter a {
+    display: contents;
+}
