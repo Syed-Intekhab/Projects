@@ -50,7 +50,7 @@ A clean and modern personal portfolio to showcase my skills, projects, and achie
 ## 📬 Contact
 
 If you'd like to connect or have any feedback, feel free to reach out:  
-📧 intekhab.dev@gmail.com *(replace with your actual email)*
+📧 intekhab.dev@gmail.com
 
 ---
 
