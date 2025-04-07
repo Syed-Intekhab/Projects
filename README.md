@@ -10,9 +10,10 @@ You can view my portfolio and live demos of many projects directly here:
 ## 📁 Projects Included
 
 ### 🔹 Mini Projects
+- ✅ Music Player  
+- ✅ Weather App (API Integration)
 - ✅ Calculator App  
 - ✅ To-Do List App  
-- ✅ Quote Generator  
 - ✅ Responsive Navigation Menu  
 - ✅ Landing Pages
 
