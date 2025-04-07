@@ -26,7 +26,7 @@ You can view my portfolio and live demos of many projects directly here:
 A clean and modern personal portfolio to showcase my skills, projects, and achievements including:
 - About Me
 - Projects Section
-- Achievements (like 100 WPM typing speed)
+- Achievements
 - Contact Section
 
 ## 🛠️ Technologies Used
