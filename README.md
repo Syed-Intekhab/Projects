@@ -5,7 +5,7 @@ Welcome to my web development portfolio repository! This repo contains all of my
 ## 🚀 Live Preview
 
 You can view my portfolio and live demos of many projects directly here:  
-🔗 [Visit Portfolio Website](https://your-github-username.github.io/)
+🔗 [Visit Portfolio Website](https://syed-intekhab.github.io/Projects)
 
 ## 📁 Projects Included
 
